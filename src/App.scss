@@ -11,6 +11,66 @@ html {
 }
 
 .app {
-  background-color: #c5e4c7;
+  background-color: hsl(185, 41%, 84%);
   height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.splitter {
+  background-color: white;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50%;
+  width: 50%;
+  border-radius: 1.5rem;
+
+  &__left {
+    // background-color: rgb(146, 190, 187);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 50%;
+  }
+
+  &__right {
+    background-color: hsl(183, 100%, 15%);
+    height: 100%;
+    width: 50%;
+    padding: 5rem 3rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1.5rem;
+    justify-content: space-between;
+
+    &--top {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 50%;
+
+      &--tipAmount,
+      &--total {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &--label {
+          h1 {
+            color: white;
+          }
+
+          h4 {
+            color: hsl(184, 14%, 56%);
+          }
+        }
+      }
+    }
+  }
 }
