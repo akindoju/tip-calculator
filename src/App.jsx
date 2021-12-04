@@ -51,7 +51,7 @@ function App() {
                 <h1>Tip Amount</h1>
                 <h4>/ person</h4>
               </div>
-              <h1>$0.00</h1>
+              <h1 className="splitter__right--top--total--price">$80.00</h1>
             </div>
 
             <div className="splitter__right--top--total">
@@ -59,7 +59,7 @@ function App() {
                 <h1>Total</h1>
                 <h4>/ person</h4>
               </div>
-              <h1>$0.00</h1>
+              <h1 className="splitter__right--top--total--price">$32.98</h1>
             </div>
           </div>
 
