@@ -37,7 +37,9 @@ function App() {
               <div className="splitter__left--selectTip--grid-grid2">
                 <button>25%</button>
                 <button>10%</button>
-                <button>50%</button>
+                <div>
+                  <input type="text" placeholder="Custom" />
+                </div>
               </div>
             </div>
           </div>
