@@ -26,7 +26,20 @@ function App() {
           </div>
 
           <div className="splitter__left--selectTip">
-            <h1>Select Tip %</h1>
+            <h1 className="splitter__left--selectTip--label">Select Tip %</h1>
+            <div className="splitter__left--selectTip--grid">
+              <div className="splitter__left--selectTip--grid-grid1">
+                <button>5%</button>
+                <button>10%</button>
+                <button>15%</button>
+              </div>
+
+              <div className="splitter__left--selectTip--grid-grid2">
+                <button>25%</button>
+                <button>10%</button>
+                <button>50%</button>
+              </div>
+            </div>
           </div>
 
           <div className="splitter__left--people">
