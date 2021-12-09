@@ -4,7 +4,11 @@ import "./App.scss";
 
 function App() {
   const [billValue, setBillValue] = useState("");
+  const [tipValue, setTipValue] = useState("");
+  const [customTip, setCustomTip] = useState("");
   const [noOfPeople, setNoOfPeople] = useState("");
+  const [tipAmount, setTipAmount] = useState("00.00");
+  const [total, setTotal] = useState("00.00");
 
   return (
     <div className="app">
@@ -29,16 +33,53 @@ function App() {
             <h1 className="splitter__left--selectTip--label">Select Tip %</h1>
             <div className="splitter__left--selectTip--grid">
               <div className="splitter__left--selectTip--grid-grid1">
-                <button>5%</button>
-                <button>10%</button>
-                <button>15%</button>
+                <button
+                  onClick={() => {
+                    setTipValue(5);
+                  }}
+                >
+                  5%
+                </button>
+                <button
+                  onClick={() => {
+                    setTipValue(10);
+                  }}
+                >
+                  10%
+                </button>
+                <button
+                  onClick={() => {
+                    setTipValue(15);
+                  }}
+                >
+                  15%
+                </button>
               </div>
 
               <div className="splitter__left--selectTip--grid-grid2">
-                <button>25%</button>
-                <button>10%</button>
+                <button
+                  onClick={() => {
+                    setTipValue(25);
+                  }}
+                >
+                  25%
+                </button>
+                <button
+                  onClick={() => {
+                    setTipValue(50);
+                  }}
+                >
+                  50%
+                </button>
                 <div>
-                  <input type="text" placeholder="Custom" />
+                  <input
+                    type="text"
+                    placeholder="Custom"
+                    value={customTip}
+                    onChange={({ target }) => {
+                      setCustomTip(target.value);
+                    }}
+                  />
                 </div>
               </div>
             </div>
@@ -66,7 +107,9 @@ function App() {
                 <h1>Tip Amount</h1>
                 <h4>/ person</h4>
               </div>
-              <h1 className="splitter__right--top--total--price">$80.00</h1>
+              <h1 className="splitter__right--top--total--price">
+                ${tipAmount}
+              </h1>
             </div>
 
             <div className="splitter__right--top--total">
@@ -74,7 +117,7 @@ function App() {
                 <h1>Total</h1>
                 <h4>/ person</h4>
               </div>
-              <h1 className="splitter__right--top--total--price">$32.98</h1>
+              <h1 className="splitter__right--top--total--price">${total}</h1>
             </div>
           </div>
 
