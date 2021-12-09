@@ -7,8 +7,14 @@ function App() {
   const [tipValue, setTipValue] = useState("");
   const [customTip, setCustomTip] = useState("");
   const [noOfPeople, setNoOfPeople] = useState("");
-  const [tipAmount, setTipAmount] = useState("00.00");
-  const [total, setTotal] = useState("00.00");
+  const [tipAmount, setTipAmount] = useState("0.00");
+  const [total, setTotal] = useState("0.00");
+
+  const getTipAmount = () => {
+    const result = (billValue * noOfPeople * tipValue) / 100;
+    setTipAmount(result);
+    console.log(tipAmount);
+  };
 
   return (
     <div className="app">
@@ -36,6 +42,7 @@ function App() {
                 <button
                   onClick={() => {
                     setTipValue(5);
+                    getTipAmount();
                   }}
                 >
                   5%
@@ -43,6 +50,7 @@ function App() {
                 <button
                   onClick={() => {
                     setTipValue(10);
+                    getTipAmount();
                   }}
                 >
                   10%
@@ -50,6 +58,7 @@ function App() {
                 <button
                   onClick={() => {
                     setTipValue(15);
+                    getTipAmount();
                   }}
                 >
                   15%
@@ -60,6 +69,7 @@ function App() {
                 <button
                   onClick={() => {
                     setTipValue(25);
+                    getTipAmount();
                   }}
                 >
                   25%
@@ -67,6 +77,7 @@ function App() {
                 <button
                   onClick={() => {
                     setTipValue(50);
+                    getTipAmount();
                   }}
                 >
                   50%
@@ -108,7 +119,7 @@ function App() {
                 <h4>/ person</h4>
               </div>
               <h1 className="splitter__right--top--total--price">
-                ${tipAmount}
+                ${tipAmount === "0.00" ? "0.00" : tipAmount.toFixed(2)}
               </h1>
             </div>
 
@@ -117,7 +128,9 @@ function App() {
                 <h1>Total</h1>
                 <h4>/ person</h4>
               </div>
-              <h1 className="splitter__right--top--total--price">${total}</h1>
+              <h1 className="splitter__right--top--total--price">
+                ${total === "0.00" ? "0.00" : total.toFixed(2)}
+              </h1>
             </div>
           </div>
 

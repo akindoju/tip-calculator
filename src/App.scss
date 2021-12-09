@@ -58,6 +58,15 @@ html {
         border: none;
         background-color: hsl(185, 41%, 84%);
         border-radius: 0.5rem;
+        text-align: end;
+        color: hsl(183, 100%, 15%);
+        font-family: "Space Mono", monospace;
+        font-size: 1.5rem;
+        font-weight: 700;
+
+        &::placeholder {
+          text-align: start;
+        }
 
         &:focus {
           outline: 1.5px solid hsl(172, 67%, 45%);
