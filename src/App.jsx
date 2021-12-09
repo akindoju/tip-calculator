@@ -9,6 +9,7 @@ function App() {
   const [noOfPeople, setNoOfPeople] = useState("");
   const [tipAmount, setTipAmount] = useState("0.00");
   const [total, setTotal] = useState("0.00");
+  const [isInputEmpty, setIsInputEmpty] = useState(false);
 
   const getTipAmount = () => {
     const result = (billValue * noOfPeople * tipValue) / 100;
@@ -24,6 +25,8 @@ function App() {
           <div className="splitter__left--bill">
             <label htmlFor="bill">Bill</label>
             <input
+              className={isInputEmpty && "emptyInputTag"}
+              autoComplete="off"
               type="text"
               name="bill"
               id="bill"
@@ -84,6 +87,7 @@ function App() {
                 </button>
                 <div>
                   <input
+                    autoComplete="off"
                     type="text"
                     placeholder="Custom"
                     value={customTip}
@@ -99,6 +103,8 @@ function App() {
           <div className="splitter__left--people">
             <label htmlFor="bill">Number of People</label>
             <input
+              className={isInputEmpty && "emptyInputTag"}
+              autoComplete="off"
               type="text"
               name="noOfPeople"
               id="noOfPeople"
