@@ -12,8 +12,13 @@ function App() {
   // const [isInputEmpty, setIsInputEmpty] = useState(false);
 
   useEffect(() => {
-    const result = (billValue * noOfPeople * tipValue) / 100;
-    setTipAmount(result);
+    const finalTipAmount = (billValue * tipValue) / 100;
+    setTipAmount(finalTipAmount);
+  }, [tipAmount, tipValue, billValue, noOfPeople]);
+
+  useEffect(() => {
+    const finalTotalAmount = billValue / noOfPeople + tipAmount;
+    setTotal(finalTotalAmount);
   }, [tipAmount, tipValue, billValue, noOfPeople]);
 
   return (
