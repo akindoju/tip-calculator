@@ -32,6 +32,7 @@ function App() {
               placeholder="$"
               value={billValue}
               onChange={({ target }) => {
+                setTipValue(0);
                 setBillValue(target.value);
               }}
             />
@@ -110,6 +111,7 @@ function App() {
               placeholder="$"
               value={noOfPeople}
               onChange={({ target }) => {
+                setTipValue(0);
                 setNoOfPeople(target.value);
               }}
             />
