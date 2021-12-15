@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AppLogo from "./logo.svg";
 import "./App.scss";
 
@@ -9,13 +9,12 @@ function App() {
   const [noOfPeople, setNoOfPeople] = useState("");
   const [tipAmount, setTipAmount] = useState("0.00");
   const [total, setTotal] = useState("0.00");
-  const [isInputEmpty, setIsInputEmpty] = useState(false);
+  // const [isInputEmpty, setIsInputEmpty] = useState(false);
 
-  const getTipAmount = () => {
+  useEffect(() => {
     const result = (billValue * noOfPeople * tipValue) / 100;
     setTipAmount(result);
-    console.log(tipAmount);
-  };
+  }, [tipAmount, tipValue, billValue, noOfPeople]);
 
   return (
     <div className="app">
@@ -25,7 +24,7 @@ function App() {
           <div className="splitter__left--bill">
             <label htmlFor="bill">Bill</label>
             <input
-              className={isInputEmpty && "emptyInputTag"}
+              // className={isInputEmpty && "emptyInputTag"}
               autoComplete="off"
               type="text"
               name="bill"
@@ -45,7 +44,7 @@ function App() {
                 <button
                   onClick={() => {
                     setTipValue(5);
-                    getTipAmount();
+                    // getTipAmount();
                   }}
                 >
                   5%
@@ -53,7 +52,7 @@ function App() {
                 <button
                   onClick={() => {
                     setTipValue(10);
-                    getTipAmount();
+                    // getTipAmount();
                   }}
                 >
                   10%
@@ -61,7 +60,7 @@ function App() {
                 <button
                   onClick={() => {
                     setTipValue(15);
-                    getTipAmount();
+                    // getTipAmount();
                   }}
                 >
                   15%
@@ -72,7 +71,7 @@ function App() {
                 <button
                   onClick={() => {
                     setTipValue(25);
-                    getTipAmount();
+                    // getTipAmount();
                   }}
                 >
                   25%
@@ -80,7 +79,7 @@ function App() {
                 <button
                   onClick={() => {
                     setTipValue(50);
-                    getTipAmount();
+                    // getTipAmount();
                   }}
                 >
                   50%
@@ -103,7 +102,7 @@ function App() {
           <div className="splitter__left--people">
             <label htmlFor="bill">Number of People</label>
             <input
-              className={isInputEmpty && "emptyInputTag"}
+              // className={isInputEmpty && "emptyInputTag"}
               autoComplete="off"
               type="text"
               name="noOfPeople"
