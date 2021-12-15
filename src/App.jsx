@@ -14,10 +14,11 @@ function App() {
   useEffect(() => {
     const finalTipAmount = (billValue * tipValue) / 100;
     setTipAmount(finalTipAmount);
-  }, [tipAmount, tipValue, billValue, noOfPeople]);
+  }, [tipValue, billValue, noOfPeople]);
 
   useEffect(() => {
     const finalTotalAmount = billValue / noOfPeople + tipAmount;
+    console.log(finalTotalAmount, "finalTipAmount");
     setTotal(finalTotalAmount);
   }, [tipAmount, tipValue, billValue, noOfPeople]);
 
@@ -50,7 +51,6 @@ function App() {
                 <button
                   onClick={() => {
                     setTipValue(5);
-                    // getTipAmount();
                   }}
                 >
                   5%
@@ -58,7 +58,6 @@ function App() {
                 <button
                   onClick={() => {
                     setTipValue(10);
-                    // getTipAmount();
                   }}
                 >
                   10%
@@ -66,7 +65,6 @@ function App() {
                 <button
                   onClick={() => {
                     setTipValue(15);
-                    // getTipAmount();
                   }}
                 >
                   15%
@@ -77,7 +75,6 @@ function App() {
                 <button
                   onClick={() => {
                     setTipValue(25);
-                    // getTipAmount();
                   }}
                 >
                   25%
@@ -85,7 +82,6 @@ function App() {
                 <button
                   onClick={() => {
                     setTipValue(50);
-                    // getTipAmount();
                   }}
                 >
                   50%
