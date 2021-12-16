@@ -14,13 +14,18 @@ function App() {
   useEffect(() => {
     const finalTipAmount = (billValue * tipValue) / 100;
     setTipAmount(finalTipAmount);
-  }, [tipValue, billValue, noOfPeople]);
+    const finalTotalAmount = billValue / noOfPeople + tipAmount;
+    console.log(tipAmount, "tipAmount");
+    // setTotal(finalTotalAmount);
+  }, [tipAmount, tipValue, billValue, noOfPeople]);
 
   useEffect(() => {
-    const finalTotalAmount = billValue / noOfPeople + tipAmount;
-    console.log(finalTotalAmount, "finalTipAmount");
-    setTotal(finalTotalAmount);
-  }, [tipAmount, tipValue, billValue, noOfPeople]);
+    if (customTip !== "") {
+      setTipValue(customTip);
+    } else {
+      setTipValue(0);
+    }
+  }, [customTip]);
 
   return (
     <div className="app">
@@ -39,7 +44,8 @@ function App() {
               value={billValue}
               onChange={({ target }) => {
                 setTipValue(0);
-                setBillValue(target.value);
+                setBillValue(Number(target.value.trim()));
+                isNaN(target.value) && setBillValue("");
               }}
             />
           </div>
@@ -93,7 +99,8 @@ function App() {
                     placeholder="Custom"
                     value={customTip}
                     onChange={({ target }) => {
-                      setCustomTip(target.value);
+                      setCustomTip(Number(target.value.trim()));
+                      isNaN(target.value) && setCustomTip("");
                     }}
                   />
                 </div>
@@ -113,7 +120,8 @@ function App() {
               value={noOfPeople}
               onChange={({ target }) => {
                 setTipValue(0);
-                setNoOfPeople(target.value);
+                setNoOfPeople(Number(target.value.trim()));
+                isNaN(target.value) && setNoOfPeople("");
               }}
             />
           </div>
