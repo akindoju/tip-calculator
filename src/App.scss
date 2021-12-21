@@ -23,19 +23,18 @@ html {
 
 .splitter {
   background-color: white;
-  padding: 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 50%;
   width: 50%;
   border-radius: 1.5rem;
+  padding: 2rem;
+  position: relative;
 
   &__left {
-    // background-color: rgb(146, 190, 187);
     display: flex;
     flex-direction: column;
-    // align-items: center;
     justify-content: space-evenly;
     height: 100%;
     width: 50%;
@@ -72,6 +71,10 @@ html {
           outline: 1.5px solid hsl(172, 67%, 45%);
         }
       }
+    }
+
+    &--bill {
+      margin-bottom: 1rem;
     }
 
     &--selectTip {
@@ -135,6 +138,10 @@ html {
               text-align: center;
             }
           }
+        }
+
+        &-grid2 {
+          margin-bottom: 1rem;
         }
       }
     }
@@ -206,4 +213,13 @@ html {
 
 .emptyInputTag {
   outline: 1.5px solid red;
+}
+
+.errMsg {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  color: red;
+  font-family: "Space Mono", monospace;
+  font-size: 1rem;
 }

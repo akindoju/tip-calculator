@@ -21,11 +21,23 @@ function App() {
     setIsInputEmpty(false);
   };
 
+  const checkingNoOfPeople = () => {
+    if (
+      billValue.length !== "" &&
+      (tipValue !== "" || customTip !== "") &&
+      noOfPeople < 1
+    ) {
+      setIsInputEmpty(true);
+    } else {
+      setIsInputEmpty(false);
+    }
+  };
+
   useEffect(() => {
     const finalTipAmount = (billValue * tipValue) / 100;
     setTipAmount(finalTipAmount);
     const finalTotalAmount = billValue / noOfPeople + tipAmount;
-    console.log(tipAmount, "tipAmount");
+    // console.log(tipAmount, "tipAmount");
     // setTotal(finalTotalAmount);
   }, [tipAmount, tipValue, billValue, noOfPeople]);
 
@@ -45,7 +57,6 @@ function App() {
           <div className="splitter__left--bill">
             <label htmlFor="bill">Bill</label>
             <input
-              className={isInputEmpty && "emptyInputTag"}
               autoComplete="off"
               type="text"
               name="bill"
@@ -58,6 +69,7 @@ function App() {
                 if (isNaN(target.value)) {
                   setBillValue("");
                 }
+
                 // setIsInputEmpty(true);
               }}
             />
@@ -70,6 +82,7 @@ function App() {
                 <button
                   onClick={() => {
                     setTipValue(5);
+                    checkingNoOfPeople();
                   }}
                 >
                   5%
@@ -77,6 +90,7 @@ function App() {
                 <button
                   onClick={() => {
                     setTipValue(10);
+                    checkingNoOfPeople();
                   }}
                 >
                   10%
@@ -84,6 +98,7 @@ function App() {
                 <button
                   onClick={() => {
                     setTipValue(15);
+                    checkingNoOfPeople();
                   }}
                 >
                   15%
@@ -94,6 +109,7 @@ function App() {
                 <button
                   onClick={() => {
                     setTipValue(25);
+                    checkingNoOfPeople();
                   }}
                 >
                   25%
@@ -101,6 +117,7 @@ function App() {
                 <button
                   onClick={() => {
                     setTipValue(50);
+                    checkingNoOfPeople();
                   }}
                 >
                   50%
@@ -124,7 +141,7 @@ function App() {
           <div className="splitter__left--people">
             <label htmlFor="bill">Number of People</label>
             <input
-              // className={isInputEmpty && "emptyInputTag"}
+              className={isInputEmpty ? "emptyInputTag" : null}
               autoComplete="off"
               type="text"
               name="noOfPeople"
@@ -138,6 +155,9 @@ function App() {
               }}
             />
           </div>
+          {isInputEmpty ? (
+            <p className="errMsg">This field cannot be less than 1</p>
+          ) : null}
         </div>
 
         <div className="splitter__right">
