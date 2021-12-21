@@ -36,10 +36,13 @@ function App() {
   useEffect(() => {
     const finalTipAmount = (billValue * tipValue) / 100;
     setTipAmount(finalTipAmount);
-    const finalTotalAmount = billValue / noOfPeople + tipAmount;
-    // console.log(tipAmount, "tipAmount");
-    // setTotal(finalTotalAmount);
-  }, [tipAmount, tipValue, billValue, noOfPeople]);
+    const finalTotalAmount = billValue / noOfPeople + finalTipAmount;
+    if (isNaN(finalTotalAmount) || finalTotalAmount === Infinity) {
+      setTotal("0.00");
+    } else {
+      setTotal(finalTotalAmount);
+    }
+  }, [tipValue, billValue, noOfPeople]);
 
   useEffect(() => {
     if (customTip !== "") {
@@ -69,8 +72,6 @@ function App() {
                 if (isNaN(target.value)) {
                   setBillValue("");
                 }
-
-                // setIsInputEmpty(true);
               }}
             />
           </div>
