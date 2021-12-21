@@ -9,7 +9,17 @@ function App() {
   const [noOfPeople, setNoOfPeople] = useState("");
   const [tipAmount, setTipAmount] = useState("0.00");
   const [total, setTotal] = useState("0.00");
-  // const [isInputEmpty, setIsInputEmpty] = useState(false);
+  const [isInputEmpty, setIsInputEmpty] = useState(false);
+
+  const resetValues = () => {
+    setBillValue("");
+    setTipValue("");
+    setCustomTip("");
+    setNoOfPeople("");
+    setTipAmount("0.00");
+    setTotal("0.00");
+    setIsInputEmpty(false);
+  };
 
   useEffect(() => {
     const finalTipAmount = (billValue * tipValue) / 100;
@@ -35,7 +45,7 @@ function App() {
           <div className="splitter__left--bill">
             <label htmlFor="bill">Bill</label>
             <input
-              // className={isInputEmpty && "emptyInputTag"}
+              className={isInputEmpty && "emptyInputTag"}
               autoComplete="off"
               type="text"
               name="bill"
@@ -45,7 +55,10 @@ function App() {
               onChange={({ target }) => {
                 setTipValue(0);
                 setBillValue(Number(target.value.trim()));
-                isNaN(target.value) && setBillValue("");
+                if (isNaN(target.value)) {
+                  setBillValue("");
+                }
+                // setIsInputEmpty(true);
               }}
             />
           </div>
@@ -150,7 +163,12 @@ function App() {
             </div>
           </div>
 
-          <button className="splitter__right--btn">Reset</button>
+          <button
+            className="splitter__right--btn"
+            onClick={() => resetValues()}
+          >
+            Reset
+          </button>
         </div>
       </div>
     </div>
